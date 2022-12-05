@@ -1,0 +1,200 @@
+{ // Arquivo de Entrada
+  "nome" : "media_3_val",
+  "entradas" : [ 6, 8, 6],
+  /* Lista de funções que serão executadas*/
+  "lista"    : [
+    { // Função Addr3
+      "id"        : 0,
+      "chamada"   : "addr3",
+      "estado"    : 0, 
+      "entradas"  : [ "", "", ""],
+      "saidas"    : [ "" ],
+      "grafo"     : [
+        {
+          "idx"   : 0,
+          "tipo"  : "lig",
+          "ligacoes" : [ 3 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 1,
+          "tipo"  : "lig",
+          "ligacoes" : [ 4 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 2,
+          "tipo"  : "lig",
+          "ligacoes" : [ 5 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 3,
+          "tipo"  : "lig",
+          "ligacoes" : [ 6 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 4,
+          "tipo"  : "lig",
+          "ligacoes" : [ 6 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 5,
+          "tipo"  : "lig",
+          "ligacoes" : [ 9 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 6,
+          "tipo"  : "soma",
+          "ligacoes" : [ 7 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 7,
+          "tipo"  : "lig",
+          "ligacoes" : [ 8 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 8,
+          "tipo"  : "lig",
+          "ligacoes" : [ 9 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 9,
+          "tipo"  : "soma",
+          "ligacoes" : [ 10 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 10,
+          "tipo"  : "lig",
+          "ligacoes" : [ 11 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 11,
+          "tipo"  : "lig",
+          "ligacoes" : [ 12 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 12,
+          "tipo"  : "lig",
+          "ligacoes" : [ "output" ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        }
+      ]
+    },{ // Função média3val
+      "id"        : 1,
+      "chamada"   : "media",
+      "estado"    : 0,
+      "entradas"  : [ "", "", ""],
+      "saidas"    : [ "" ],
+      "grafo"     : [
+        {
+          "idx"   : 0,
+          "tipo"  : "lig",
+          "ligacoes" : [ 3 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 1,
+          "tipo"  : "lig",
+          "ligacoes" : [ 4 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 2,
+          "tipo"  : "lig",
+          "ligacoes" : [ 5 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 3,
+          "tipo"  : "lig",
+          "ligacoes" : [ 6 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 4,
+          "tipo"  : "lig",
+          "ligacoes" : [ 6 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 5,
+          "tipo"  : "lig",
+          "ligacoes" : [ 6 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 6,
+          "tipo"  : "encp",
+          "ligacoes" : [ "addr3", 8 ],
+          "inputs"   : [ "", "", "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 7,
+          "tipo"  : "const",
+          "ligacoes" : [ 9 ],
+          "inputs"   : [ 1 ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 8,
+          "tipo"  : "lig",
+          "ligacoes" : [ 10 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 9,
+          "tipo"  : "lig",
+          "ligacoes" : [ 11 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 10,
+          "tipo"  : "lig",
+          "ligacoes" : [ 12 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 11,
+          "tipo"  : "lig",
+          "ligacoes" : [ 12 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 12,
+          "tipo"  : "divs",
+          "ligacoes" : [ 13 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 13,
+          "tipo"  : "lig",
+          "ligacoes" : [ 14 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 14,
+          "tipo"  : "lig",
+          "ligacoes" : [ 15 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 15,
+          "tipo"  : "lig",
+          "ligacoes" : [ "x" ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  // Arquivo de Entrada
+  "nome" : "media_3_val",
+  "entradas" : [ 6 ],
+  "estado"   : 0,
+  /* Lista de funções que serão executadas*/
+  "lista"    : [
+    { // Função fatorial
+      "id"        : 0,
+      "chamada"   : "fatorial",
+      "estado"    : 0, 
+      "entradas"  : [ "" ],
+      "saidas"    : [ "" ],
+      "grafo"     : [
+        {
+          "idx"   : 0,
+          "tipo"  : "lig",
+          "ligacoes" : [ 1 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 1,
+          "tipo"  : "lig",
+          "ligacoes" : [ 6, 9, 20 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 2,
+          "tipo"  : "const",
+          "ligacoes" : [ 4 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 3,
+          "tipo"  : "const",
+          "ligacoes" : [ 5 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 4,
+          "tipo"  : "lig",
+          "ligacoes" : [ 7 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 5,
+          "tipo"  : "lig",
+          "ligacoes" : [ 8 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 6,
+          "tipo"  : "lig",
+          "ligacoes" : [ 10 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 7,
+          "tipo"  : "lig",
+          "ligacoes" : [ 10 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 8,
+          "tipo"  : "lig",
+          "ligacoes" : [ 11 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 9,
+          "tipo"  : "lig",
+          "ligacoes" : [ 11 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 10,
+          "tipo"  : "subs",
+          "ligacoes" : [ 12 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ]
+        },{
+          "idx"   : 11,
+          "tipo"  : "igual",
+          "ligacoes" : [ 13 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 12,
+          "tipo"  : "lig",
+          "ligacoes" : [ 14 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 13,
+          "tipo"  : "lig",
+          "ligacoes" : [ 16 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 14,
+          "tipo"  : "lig",
+          "ligacoes" : [ 17 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 15,
+          "tipo"  : "const",
+          "ligacoes" : [ 1 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 16,
+          "tipo"  : "disor",
+          "ligacoes" : [ 15, 17 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "", "" ] 
+        },{
+          "idx"   : 17,
+          "tipo"  : "encp",
+          "ligacoes" : [ "fatorial", 18 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 18,
+          "tipo"  : "lig",
+          "ligacoes" : [ 19 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 19,
+          "tipo"  : "lig",
+          "ligacoes" : [ 21 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 20,
+          "tipo"  : "lig",
+          "ligacoes" : [ 21 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 21,
+          "tipo"  : "mult",
+          "ligacoes" : [ 24 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 22,
+          "tipo"  : "lig",
+          "ligacoes" : [ 23 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 23,
+          "tipo"  : "visor",
+          "ligacoes" : [ 25 ],
+          "inputs"   : [ "", "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 24,
+          "tipo"  : "lig",
+          "ligacoes" : [ 23 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 25,
+          "tipo"  : "lig",
+          "ligacoes" : [ 26 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 26,
+          "tipo"  : "lig",
+          "ligacoes" : [ 27 ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        },{
+          "idx"   : 27,
+          "tipo"  : "lig",
+          "ligacoes" : [ "x" ],
+          "inputs"   : [ "" ],
+          "outputs"  : [ "" ] 
+        }
+      ]
+    }
+  ]
+}
