@@ -1,11 +1,9 @@
 {
-  // Arquivo de Entrada
-  "nome" : "media_3_val",
-  "entradas" : [ 6 ],
+  "nome" : "calculo_fatorial",
+  "entradas" : [ 4 ],
   "estado"   : 0,
-  /* Lista de funções que serão executadas*/
   "lista"    : [
-    { // Função fatorial
+    { 
       "id"        : 0,
       "chamada"   : "fatorial",
       "estado"    : 0, 
@@ -28,13 +26,13 @@
           "idx"   : 2,
           "tipo"  : "const",
           "ligacoes" : [ 4 ],
-          "inputs"   : [ "" ],
+          "inputs"   : [ 1 ],
           "outputs"  : [ "" ] 
         },{
           "idx"   : 3,
           "tipo"  : "const",
           "ligacoes" : [ 5 ],
-          "inputs"   : [ "" ],
+          "inputs"   : [ 0 ],
           "outputs"  : [ "" ] 
         },{
           "idx"   : 4,
@@ -105,8 +103,8 @@
         },{
           "idx"   : 15,
           "tipo"  : "const",
-          "ligacoes" : [ 1 ],
-          "inputs"   : [ "" ],
+          "ligacoes" : [ 22 ],
+          "inputs"   : [ 1 ],
           "outputs"  : [ "" ] 
         },{
           "idx"   : 16,

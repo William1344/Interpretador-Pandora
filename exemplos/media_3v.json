@@ -1,9 +1,8 @@
-{ // Arquivo de Entrada
+{ 
   "nome" : "media_3_val",
   "entradas" : [ 6, 8, 6],
-  /* Lista de funções que serão executadas*/
   "lista"    : [
-    { // Função Addr3
+    { 
       "id"        : 0,
       "chamada"   : "addr3",
       "estado"    : 0, 
@@ -90,7 +89,7 @@
           "outputs"  : [ "" ]
         }
       ]
-    },{ // Função média3val
+    },{ 
       "id"        : 1,
       "chamada"   : "media",
       "estado"    : 0,
@@ -143,7 +142,7 @@
           "idx"   : 7,
           "tipo"  : "const",
           "ligacoes" : [ 9 ],
-          "inputs"   : [ 1 ],
+          "inputs"   : [ 3 ],
           "outputs"  : [ "" ]
         },{
           "idx"   : 8,

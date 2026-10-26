@@ -1,0 +1,77 @@
+{
+  "nome": "pandora-programa",
+  "entradas": [
+    3,
+    4
+  ],
+  "estado": 0,
+  "lista": [
+    {
+      "id": 0,
+      "chamada": "main",
+      "estado": 0,
+      "entradas": [
+        "",
+        ""
+      ],
+      "saidas": [
+        ""
+      ],
+      "grafo": [
+        {
+          "idx": 0,
+          "tipo": "lig",
+          "ligacoes": [
+            2
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 1,
+          "tipo": "lig",
+          "ligacoes": [
+            2
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 2,
+          "tipo": "soma",
+          "ligacoes": [
+            3
+          ],
+          "inputs": [
+            "",
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 3,
+          "tipo": "lig",
+          "ligacoes": [
+            "output"
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        }
+      ]
+    }
+  ]
+}

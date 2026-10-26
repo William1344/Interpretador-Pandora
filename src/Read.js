@@ -1,14 +1,14 @@
-/*  Definições:
-  - O interpretador só será inicializado após o start do usuário.
-  - E deve receber um Arquivo com blocos de funções representados pela classe ArqEntrada.
-  - O indice final da lista é a função inicial e recebe os dados de entradas definidos pelo usuário, 
-    ela deve ser responsável pela chamada das outras funções.
-  - Deve receber um parâmetro de velocidade de execução, ou seja o tempo de transição dos valores entre 
-    os nodos.
-  - O interpretador executa o programa de forma sequencial, movendo os valores pelos nodos e executando
-    as funções presentes nos operadores lógicos ou condicionais.
-  - O interpretador deve ser capaz de executar programas com múltiplas funções.
-*/
+import { readFileSync } from 'node:fs';
+import { normalizarArquivo } from './Format.js';
+
+export { normalizarArquivo };
+
+export function lerArquivo(caminho) {
+  const texto = readFileSync(caminho, 'utf8');
+  return normalizarArquivo(JSON.parse(texto));
+}
+
+export default lerArquivo;
 
 /* Arquivo de entrada representa um programa que carrega uma lista de funções a serem executadas. 
   1) Nome do arquivo e chave única.
