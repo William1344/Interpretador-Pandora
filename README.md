@@ -330,6 +330,9 @@ O suporte funcional descrito acima ainda é experimental e, nesta etapa, é
 consumido diretamente pelo interpretador. A IDE e o serializador visual ainda
 não oferecem esses nodos.
 
+Para uma explicação passo a passo, consulte o
+[Documentação da Sintaxe Pandora](./documentacao.md).
+
 ## Artigos relacionados
 
 A linguagem Pandora foi motivada por dois trabalhos:
