@@ -10,6 +10,7 @@ export default class Nodo{
     this.idx        = dados.idx ?? 0;                       // 1)
     this.type       = dados.type ?? dados.tipo ?? '';       // 2)
     this.ligacoes   = dados.ligacoes ?? [];                 // 3) Lista de nodos seguintes
+    this.ligacaoPortas = dados.ligacaoPortas ?? [];         // Porta de entrada correspondente a cada ligação
     this.entradas   = dados.entradas ?? dados.inputs ?? []; // 4) Entradas do nodo
     this.saidas     = dados.saidas ?? dados.outputs ?? [];  // 5) Saída do nodo
     this.valor      = dados.valor ?? dados.value;            // Valor estruturado ou constante
@@ -29,9 +30,13 @@ export default class Nodo{
       || this.entradas.length > 0 && this.entradas.every((entrada) => entrada !== '');
   }
 
-  receberEntrada(valor) {
-    const indiceVazio = this.entradas.findIndex((entrada) => entrada === '');
-    if (indiceVazio === -1) throw new Error(`Nodo ${this.idx} não possui entrada disponível`);
+  receberEntrada(valor, indice) {
+    const indiceVazio = Number.isInteger(indice)
+      ? indice
+      : this.entradas.findIndex((entrada) => entrada === '');
+    if (indiceVazio < 0 || indiceVazio >= this.entradas.length || this.entradas[indiceVazio] !== '') {
+      throw new Error(`Nodo ${this.idx} não possui entrada disponível`);
+    }
     this.entradas[indiceVazio] = valor;
   }
 
@@ -173,11 +178,11 @@ export default class Nodo{
   propagar(nodos) {
     if (this.saidas.length === 0) return;
 
-    for (const ligacao of this.ligacoes) {
+    for (const [index, ligacao] of this.ligacoes.entries()) {
       if (typeof ligacao !== 'number') continue;
       const destino = nodos.find((nodo) => nodo.idx === ligacao);
       if (!destino) throw new Error(`Nodo de destino não encontrado: ${ligacao}`);
-      destino.receberEntrada(this.saidas[0]);
+      destino.receberEntrada(this.saidas[0], this.ligacaoPortas[index]);
     }
   }
 }

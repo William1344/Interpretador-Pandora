@@ -74,6 +74,7 @@ export default class Programa{
         idx: nodo.idx,
         type: nodo.type,
         ligacoes: [...nodo.ligacoes],
+        ligacaoPortas: [...(nodo.ligacaoPortas ?? [])],
         entradas: [...nodo.entradas],
         saidas: [...nodo.saidas],
         valor: cloneRuntimeValue(nodo.valor),
