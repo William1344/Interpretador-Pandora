@@ -3,8 +3,13 @@ function normalizarNodo(dados, indice) {
     idx: dados.idx ?? indice,
     type: dados.type ?? dados.tipo ?? '',
     ligacoes: dados.ligacoes ?? [],
+    ligacaoPortas: dados.ligacaoPortas ?? dados.connectionPorts ?? [],
     entradas: dados.entradas ?? dados.inputs ?? [],
-    saidas: dados.saidas ?? dados.outputs ?? []
+    saidas: dados.saidas ?? dados.outputs ?? [],
+    valor: dados.valor ?? dados.value,
+    funcao: dados.funcao ?? dados.functionId ?? dados.function,
+    padroes: dados.padroes ?? dados.patterns ?? [],
+    nome: dados.nome ?? dados.name
   };
 }
 

@@ -160,6 +160,38 @@ condição -> disor
 
 Somente o ramo selecionado continua a execução. O `visor` reúne os resultados dos ramos em uma única saída.
 
+## Recursos funcionais adicionais
+
+O interpretador também aceita um núcleo experimental de valores funcionais,
+sem alterar o formato dos programas legados:
+
+| Tipo de nodo | Semântica |
+|---|---|
+| `func` ou `lambda` | Produz um valor de função referenciado por `funcao` |
+| `apply` | Aplica a função recebida na primeira entrada aos argumentos seguintes |
+| `list` | Produz uma lista imutável a partir de `valor` |
+| `cons` | Adiciona o primeiro valor ao início da lista recebida |
+| `head` | Obtém o primeiro elemento de uma lista não vazia |
+| `tail` | Produz a cauda de uma lista não vazia |
+| `is-empty` | Verifica se uma lista está vazia |
+| `match` | Seleciona o primeiro padrão compatível |
+| `binding` | Disponibiliza no ramo um valor capturado por `match` |
+
+Um valor de função tem a forma `{ "kind": "function", "functionId": "soma" }`.
+Uma lista tem a forma `{ "kind": "list", "elements": [1, 2, 3] }`.
+Os padrões básicos são `literal`, `wildcard`, `empty-list`, `variable` e
+`list-cons`. O nodo `match` recebe os padrões pelo campo `padroes` e escolhe
+as ligações numéricas na mesma ordem dos padrões.
+
+As funções nomeadas continuam podendo ser chamadas pelo nodo `encp`. O nodo
+`apply` é a forma dinâmica, adequada para funções passadas como valores. O
+nodo `lambda` representa uma função sem captura; sua definição é mantida na
+lista de funções com um identificador interno.
+
+As listas não são modificadas durante `cons` ou `tail`: cada operação produz
+um novo valor. `head` e `tail` geram erro explícito quando recebem uma lista
+vazia ou um valor que não é lista.
+
 ## Estados de execução
 
 | Estado | Significado |
@@ -293,6 +325,13 @@ Este é um protótipo em desenvolvimento. Ainda são necessários:
 - tratamento mais rigoroso de aridade e ligações duplicadas;
 - testes automatizados permanentes;
 - integração com uma IDE visual.
+
+O suporte funcional descrito acima ainda é experimental e, nesta etapa, é
+consumido diretamente pelo interpretador. A IDE e o serializador visual ainda
+não oferecem esses nodos.
+
+Para uma explicação passo a passo, consulte o
+[Documentação da Sintaxe Pandora](./documentacao.md).
 
 ## Artigos relacionados
 

@@ -1,4 +1,5 @@
 import Funcao from './Funcao.js';
+import { cloneRuntimeValue, isFunctionValue, matchPattern } from '../Runtime.js';
 
 /*
   Estrutura de decisão, representa os estados do programa, variáveis de decisão e ações que o programa
@@ -57,23 +58,32 @@ export default class Programa{
   }
 
   executarFuncao = function(funcaoOuNome, entradas, verbose = false){
-    const definicao = typeof funcaoOuNome === 'string'
-      ? this.funcoes.find((item) => item.chamada === funcaoOuNome)
-      : funcaoOuNome;
+    const definicao = this.resolverDefinicao(funcaoOuNome);
 
-    if (!definicao) throw new Error(`Função não encontrada: ${funcaoOuNome}`);
+    if (!definicao) throw new Error(`Função não encontrada: ${this.descreverFuncao(funcaoOuNome)}`);
+    const parametros = definicao.entradas ?? [];
+    const argumentos = entradas ?? [];
+    if (parametros.length !== argumentos.length) {
+      throw new Error(`A função ${definicao.chamada} exige ${parametros.length} argumento(s), mas recebeu ${argumentos.length}`);
+    }
     const funcao = new Funcao({
       id: definicao.id,
       chamada: definicao.chamada,
+      entradas: [...(definicao.entradas ?? [])],
       grafo: definicao.grafo.map((nodo) => ({
         idx: nodo.idx,
         type: nodo.type,
         ligacoes: [...nodo.ligacoes],
+        ligacaoPortas: [...(nodo.ligacaoPortas ?? [])],
         entradas: [...nodo.entradas],
-        saidas: [...nodo.saidas]
+        saidas: [...nodo.saidas],
+        valor: cloneRuntimeValue(nodo.valor),
+        funcao: nodo.funcao,
+        padroes: nodo.padroes,
+        nome: nodo.nome
       }))
     }, definicao.id);
-    this.prepararFuncao(funcao, entradas);
+    this.prepararFuncao(funcao, argumentos);
     const resultado = this.executarGrafo(funcao, verbose);
     definicao.saidas = [...funcao.saidas];
     definicao.estado = funcao.estado;
@@ -81,22 +91,20 @@ export default class Programa{
   }
 
   prepararFuncao = function(funcao, entradas){
-    if (funcao.grafo.length < entradas.length) {
-      throw new Error(`A função ${funcao.chamada} não possui entradas suficientes`);
-    }
-
     funcao.entradas = [...entradas];
     funcao.saidas = [];
 
     for (const nodo of funcao.grafo) {
-      if (nodo.type !== 'const') {
+      if (!['const', 'list', 'func', 'function', 'ref', 'lambda'].includes(nodo.type)) {
         nodo.entradas = nodo.entradas.map(() => '');
       }
       nodo.saidas = [];
     }
 
     for (let indice = 0; indice < entradas.length; indice++) {
-      funcao.grafo[indice].receberEntrada(entradas[indice]);
+      const entrada = funcao.grafo.find((nodo) => nodo.idx === indice);
+      if (!entrada) throw new Error(`Entrada ${indice} ausente na função ${funcao.chamada}`);
+      entrada.receberEntrada(entradas[indice]);
     }
   }
 
@@ -109,6 +117,7 @@ export default class Programa{
         .flatMap((nodo) => nodo.ligacoes.filter((ligacao) => typeof ligacao === 'number'))
     );
     let resultado;
+    const contexto = { bindings: {} };
 
     funcao.estado = 1;
 
@@ -117,8 +126,14 @@ export default class Programa{
 
       for (const nodo of funcao.grafo) {
         if (executados.has(nodo.idx) || bloqueados.has(nodo.idx) || aguardandoDisor.has(nodo.idx) || !nodo.pronto()) continue;
+        if (nodo.type === 'binding' && !(nodo.nome in contexto.bindings)) continue;
 
-        nodo.executar((nome, entradas) => this.executarFuncao(nome, entradas, verbose));
+        nodo.executar((funcaoOuNome, entradas) =>
+          isFunctionValue(funcaoOuNome)
+            ? this.aplicarFuncao(funcaoOuNome, entradas, verbose)
+            : typeof funcaoOuNome === 'string'
+              ? this.executarFuncao(funcaoOuNome, entradas, verbose)
+              : this.aplicarFuncao(funcaoOuNome, entradas, verbose), contexto);
 
         if (verbose) {
           console.log(`[${funcao.chamada}] Nodo executado`, {
@@ -133,8 +148,18 @@ export default class Programa{
         executados.add(nodo.idx);
         houveProgresso = true;
 
-        if (nodo.type === 'disor') {
+        if (nodo.type === 'disor' || nodo.type === 'match') {
           const ramoEscolhido = nodo.saidas[0] ? 0 : 1;
+          if (nodo.type === 'match') {
+            const escolha = this.escolherRamo(nodo);
+            if (escolha === undefined) {
+              throw new Error(`Nenhum padrão correspondeu no nodo ${nodo.idx}`);
+            }
+            contexto.bindings = escolha.bindings;
+            nodo.saidas = [true];
+            this.bloquearRamos(nodo, escolha.index, bloqueados, aguardandoDisor);
+            continue;
+          }
           const ramoIgnorado = nodo.ligacoes[1 - ramoEscolhido];
           if (typeof ramoIgnorado === 'number') bloqueados.add(ramoIgnorado);
           const proximoRamo = nodo.ligacoes[ramoEscolhido];
@@ -161,5 +186,44 @@ export default class Programa{
         throw new Error(`Grafo da função ${funcao.chamada} não pode progredir`);
       }
     }
+  }
+
+  resolverDefinicao = function(funcaoOuNome) {
+    if (isFunctionValue(funcaoOuNome)) {
+      return this.funcoes.find((item) =>
+        item.id === funcaoOuNome.functionId || item.chamada === funcaoOuNome.functionId);
+    }
+    if (typeof funcaoOuNome === 'string') {
+      return this.funcoes.find((item) =>
+        item.chamada === funcaoOuNome || String(item.id) === funcaoOuNome);
+    }
+    return funcaoOuNome;
+  }
+
+  descreverFuncao = function(funcaoOuNome) {
+    return isFunctionValue(funcaoOuNome) ? funcaoOuNome.functionId : funcaoOuNome;
+  }
+
+  aplicarFuncao = function(valorFuncao, entradas, verbose = false) {
+    if (!isFunctionValue(valorFuncao)) {
+      throw new Error('Aplicação exige um valor de função como primeiro argumento');
+    }
+    return this.executarFuncao(valorFuncao, entradas, verbose);
+  }
+
+  escolherRamo = function(nodo) {
+    for (let index = 0; index < nodo.padroes.length; index++) {
+      const resultado = matchPattern(nodo.padroes[index], nodo.entradas[0]);
+      if (resultado.matched) return { index, bindings: resultado.bindings };
+    }
+    return undefined;
+  }
+
+  bloquearRamos = function(nodo, escolhido, bloqueados, aguardandoDisor) {
+    nodo.ligacoes.forEach((ligacao, index) => {
+      if (typeof ligacao !== 'number') return;
+      if (index === escolhido) aguardandoDisor.delete(ligacao);
+      else bloqueados.add(ligacao);
+    });
   }
 }

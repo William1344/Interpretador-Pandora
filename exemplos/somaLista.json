@@ -1,0 +1,420 @@
+{
+  "nome": "pandora-programa",
+  "entradas": [
+    {
+      "kind": "list",
+      "elements": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "estado": 0,
+  "lista": [
+    {
+      "id": 0,
+      "chamada": "somaLista",
+      "estado": 0,
+      "entradas": [
+        ""
+      ],
+      "saidas": [
+        ""
+      ],
+      "grafo": [
+        {
+          "idx": 0,
+          "tipo": "lig",
+          "meta": {
+            "position": {
+              "x": -31.33333333333337,
+              "y": 288.99999999999994
+            }
+          },
+          "ligacoes": [
+            1,
+            5
+          ],
+          "ligacaoPortas": [
+            0,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 1,
+          "tipo": "is-empty",
+          "meta": {
+            "position": {
+              "x": 110.10185185185162,
+              "y": 162.3333333333332
+            }
+          },
+          "ligacoes": [
+            3
+          ],
+          "ligacaoPortas": [
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 2,
+          "tipo": "const",
+          "meta": {
+            "position": {
+              "x": 703.2685185185187,
+              "y": 23.33333333333323
+            }
+          },
+          "ligacoes": [
+            4
+          ],
+          "ligacaoPortas": [
+            0
+          ],
+          "inputs": [
+            0
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 3,
+          "tipo": "disor",
+          "meta": {
+            "position": {
+              "x": 277.935185185185,
+              "y": 161.66666666666646
+            }
+          },
+          "ligacoes": [
+            2,
+            5
+          ],
+          "ligacaoPortas": [
+            0,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 4,
+          "tipo": "visor",
+          "meta": {
+            "position": {
+              "x": 1534.9351851851852,
+              "y": 211.33333333333323
+            }
+          },
+          "ligacoes": [
+            16
+          ],
+          "ligacaoPortas": [
+            0
+          ],
+          "inputs": [
+            "",
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 5,
+          "tipo": "lig",
+          "meta": {
+            "position": {
+              "x": 413.26851851851836,
+              "y": 282.6666666666665
+            }
+          },
+          "ligacoes": [
+            6,
+            7
+          ],
+          "ligacaoPortas": [
+            0,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 6,
+          "tipo": "head",
+          "meta": {
+            "position": {
+              "x": 623.2685185185184,
+              "y": 199.99999999999983
+            }
+          },
+          "ligacoes": [
+            11,
+            14
+          ],
+          "ligacaoPortas": [
+            0,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 7,
+          "tipo": "tail",
+          "meta": {
+            "position": {
+              "x": 571.6018518518517,
+              "y": 404.33333333333314
+            }
+          },
+          "ligacoes": [
+            8,
+            13
+          ],
+          "ligacaoPortas": [
+            0,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 8,
+          "tipo": "is-empty",
+          "meta": {
+            "position": {
+              "x": 724.9351851851849,
+              "y": 400.66666666666663
+            }
+          },
+          "ligacoes": [
+            9
+          ],
+          "ligacaoPortas": [
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 9,
+          "tipo": "disor",
+          "meta": {
+            "position": {
+              "x": 899.6018518518516,
+              "y": 404
+            }
+          },
+          "ligacoes": [
+            11,
+            12
+          ],
+          "ligacaoPortas": [
+            0,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 10,
+          "tipo": "visor",
+          "meta": {
+            "position": {
+              "x": 1334.6018518518517,
+              "y": 406.99999999999994
+            }
+          },
+          "ligacoes": [
+            4
+          ],
+          "ligacaoPortas": [
+            1
+          ],
+          "inputs": [
+            "",
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 11,
+          "tipo": "lig",
+          "meta": {
+            "position": {
+              "x": 1089.101851851852,
+              "y": 207.33333333333317
+            }
+          },
+          "ligacoes": [
+            10
+          ],
+          "ligacaoPortas": [
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 12,
+          "tipo": "encp",
+          "meta": {
+            "position": {
+              "x": 1049.6018518518513,
+              "y": 517.6666666666665
+            }
+          },
+          "ligacoes": [
+            "somaLista",
+            15
+          ],
+          "ligacaoPortas": [
+            null,
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 13,
+          "tipo": "lig",
+          "meta": {
+            "position": {
+              "x": 765.1574074074073,
+              "y": 510.1111111111111
+            }
+          },
+          "ligacoes": [
+            12
+          ],
+          "ligacaoPortas": [
+            0
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 14,
+          "tipo": "lig",
+          "meta": {
+            "position": {
+              "x": 977.1574074074072,
+              "y": 633.7777777777778
+            }
+          },
+          "ligacoes": [
+            15
+          ],
+          "ligacaoPortas": [
+            1
+          ],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 15,
+          "tipo": "soma",
+          "meta": {
+            "position": {
+              "x": 1195.4907407407406,
+              "y": 537.4444444444443
+            }
+          },
+          "ligacoes": [
+            10
+          ],
+          "ligacaoPortas": [
+            1
+          ],
+          "inputs": [
+            "",
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        },
+        {
+          "idx": 16,
+          "tipo": "lig",
+          "meta": {
+            "position": {
+              "x": 1730.268518518518,
+              "y": 206.66666666666652
+            }
+          },
+          "ligacoes": [
+            "output"
+          ],
+          "ligacaoPortas": [],
+          "inputs": [
+            ""
+          ],
+          "outputs": [
+            ""
+          ]
+        }
+      ]
+    }
+  ]
+}
